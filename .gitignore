@@ -1,0 +1,6 @@
+# JMeter results and logs
+*.jtl
+*.log
+results/
+jmeter.log
+result.jtl
