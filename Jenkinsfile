@@ -16,9 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo "building image"
-                script {
-                    docker.build(IMAGE_NAME)
-                }
+                sh 'docker build -t my-performance-test-image .'
             }
         }
     }
