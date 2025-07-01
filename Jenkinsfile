@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "my-jmeter-container"
+        RESULTS_DIR = "results"
     }
 
     stages {
         stage('Checkout') {
             steps {
+                cleanWs()
                 echo "cloning repo"
                 checkout scm
             }
@@ -28,5 +29,13 @@ pipeline {
                 '''
             }
         }
+        
+        stage('Archive Results') {
+            steps {
+                echo "Archiving test results"
+                archiveArtifacts artifacts: "${RESULTS_DIR}/*", allowEmptyArchive: true
+            }
+        }
+
     }
 }
