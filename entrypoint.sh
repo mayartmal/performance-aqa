@@ -10,6 +10,8 @@ if [ -d /results ]; then
     cp /result.jtl /results/
     cp /jmeter.log /results/
     pwd
+    cd /results
+    ls -la
 else
     echo "/results not found. skip this stage"
 fi
