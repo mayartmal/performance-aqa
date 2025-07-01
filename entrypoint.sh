@@ -9,6 +9,7 @@ if [ -d /results ]; then
     echo "copy results to /results"
     cp /result.jtl /results/
     cp /jmeter.log /results/
+    chown -R 1000:1000 /results
     pwd
     cd /results
     ls -la
