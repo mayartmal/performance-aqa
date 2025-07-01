@@ -9,6 +9,7 @@ if [ -d /results ]; then
     echo "copy results to /results"
     cp /result.jtl /results/
     cp /jmeter.log /results/
+    pwd
 else
     echo "/results not found. skip this stage"
 fi
