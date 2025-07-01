@@ -35,7 +35,7 @@ pipeline {
                 echo "Archiving test results"
                 sh '''
                     echo "Listing results folder:"
-                    ls -l results
+                    ls -la results
                     echo "Workspace:"
                     pwd
                 '''
