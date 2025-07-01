@@ -33,6 +33,12 @@ pipeline {
         stage('Archive Results') {
             steps {
                 echo "Archiving test results"
+                sh '''
+                    echo "Listing results folder:"
+                    ls -l results
+                    echo "Workspace:"
+                    pwd
+                '''
                 archiveArtifacts artifacts: "${RESULTS_DIR}/*", allowEmptyArchive: true
             }
         }
