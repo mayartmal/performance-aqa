@@ -44,7 +44,7 @@ pipeline {
             ls -la
             '''
             archiveArtifacts artifacts: 'results/*.jtl,results/*.log'
-            perfReport sourceDataFiles: 'results/results.jtl'
+            perfReport sourceDataFiles: 'results/result.jtl'
         }
         
         
