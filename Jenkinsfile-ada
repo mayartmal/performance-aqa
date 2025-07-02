@@ -20,8 +20,12 @@ pipeline {
             steps {
                 echo 'inside container'
                 sh '''
+                    pwd
                     jmeter --version
+                    jmeter -n -t /tests/qpp-test-plan.jmx -l /result.jtl -j /jmeter.log
+                    echo "JMeter Test Finished"
                     ls -la
+
                 '''
             }
         }
