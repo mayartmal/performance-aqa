@@ -35,7 +35,7 @@ pipeline {
         stage('get config file') {
             pwd
             ls -la
-            
+
             echo 'get congig data'
             sh "wget https://raw.githubusercontent.com/Blazemeter/taurus/master/examples/jmeter/stepping.yml"
         }
@@ -47,8 +47,8 @@ pipeline {
 
     }
 
-    }
-    }
+    
+    
 
     post {
         success {
