@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('not docker') {
+            steps {
+                echo 'not inside container'
+            }
+        }
+        
+        stage('docker') {
+            agent {
+                docker {
+                    image 'alpine/jmeter:5.6'
+                    args '--entrypoint=""'
+                }    
+            }
+            
+            steps {
+                echo 'inside container'
+                sh '''
+                    jmeter --version
+                '''
+            }
+        }
+    }
+}
