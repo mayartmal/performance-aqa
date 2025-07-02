@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('not docker') {
+        stage('Non Docker Checker') {
             steps {
-                echo 'not inside container'
+                echo 'Not inside container'
             }
         }
         
-        stage('docker') {
+        stage('Running JMeter Tests') {
             agent {
                 docker {
                     image 'alpine/jmeter:5.6'
@@ -26,30 +26,10 @@ pipeline {
                     jmeter -n -t tests/qpp-test-plan.jmx -l results/result.jtl -j results/jmeter.log
                     echo "JMeter Test Finished"
                     ls -la
-
                 '''
-
-
-                echo 'get congig data'
-                sh '''
-                    pwd
-                    ls -la
-                    cat stepping.yml
-                '''
-                // sh "wget https://raw.githubusercontent.com/Blazemeter/taurus/master/examples/jmeter/stepping.yml"
-                
-                echo 'stepping'
-                bzt "stepping.yml" 
-
-
-
-                
             }
 
-        }
-
-        
-
+        }       
     }
 
     
@@ -64,6 +44,7 @@ pipeline {
             ls -la
             '''
             archiveArtifacts artifacts: 'results/*.jtl,results/*.log'
+            publishPerformanceReport parsers: [[$class: 'JMeterParser', glob: 'results/*.jtl']]
         }
         
         
