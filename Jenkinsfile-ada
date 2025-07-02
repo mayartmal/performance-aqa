@@ -33,6 +33,11 @@ pipeline {
     }
 
     post {
+        success {
+            archiveArtifacts artifacts: 'results/result.jtl', 'results/jmeter.log'
+        }
+        
+        
         always {
             cleanWs()
         }
