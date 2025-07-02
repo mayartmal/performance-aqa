@@ -20,6 +20,7 @@ pipeline {
                 echo 'inside container'
                 sh '''
                     jmeter --version
+                    ls -la
                 '''
             }
         }
