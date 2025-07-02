@@ -33,19 +33,22 @@ pipeline {
         }
 
         stage('get config file') {
-            sh '''
-                pwd
-                ls -la
-            '''
-
-
-            echo 'get congig data'
-            sh "wget https://raw.githubusercontent.com/Blazemeter/taurus/master/examples/jmeter/stepping.yml"
+            steps {    
+                sh '''
+                    pwd
+                    ls -la
+                '''
+                echo 'get congig data'
+                sh "wget https://raw.githubusercontent.com/Blazemeter/taurus/master/examples/jmeter/stepping.yml"
+            }
         }
 
         stage("run test") {
-            echo 'stepping'
-            bzt "stepping.yml"
+            steps {
+                echo 'stepping'
+                bzt "stepping.yml"    
+            }
+
         }
 
     }
