@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('clean') {
-            cleanWs()
-        }
-            
-        
-        
         stage('not docker') {
             steps {
                 echo 'not inside container'
