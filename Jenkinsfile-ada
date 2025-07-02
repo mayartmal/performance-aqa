@@ -28,25 +28,24 @@ pipeline {
                     ls -la
 
                 '''
-                
-            }
 
-            steps {    
+
                 echo 'get congig data'
                 sh '''
                     pwd
                     ls -la
                     cat stepping.yml
                 '''
-                
-                
                 // sh "wget https://raw.githubusercontent.com/Blazemeter/taurus/master/examples/jmeter/stepping.yml"
+                
+                echo 'stepping'
+                bzt "stepping.yml" 
+
+
+
+                
             }
 
-            steps {
-                echo 'stepping'
-                bzt "stepping.yml"    
-            }
         }
 
         
