@@ -25,6 +25,7 @@ pipeline {
             steps {
                 echo "running the test"
                 sh '''
+                    
                     docker run --rm -v $(pwd)/results:/results my-performance-test-image
                 '''
             }
