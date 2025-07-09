@@ -23,7 +23,7 @@ pipeline {
                     pwd
                     ls -la
                     jmeter --version
-                    jmeter -n -t tests/qpp-test-plan.jmx -l results/result.jtl -j results/jmeter.log
+                    jmeter -n -t tests/qpp-test-plan_v3.jmx -l results/result.jtl -j results/jmeter.log
                     echo "JMeter Test Finished"
                     ls -la
                 '''
